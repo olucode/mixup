@@ -5,19 +5,21 @@
         <h2 class="text-center">News Items From Hacker News</h2>
     </div>
 
-    <div class="row">
-        <div class="item">
-            <h4>Simple Sidebar</h4>
-            <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear
-                non-collapsed on larger screens.</p>
-        </div>
+    <br>
 
-        <div class="item">
-            <h4>Simple Sidebar</h4>
-            <div class="item-content">
-                <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will
-                    appear non-collapsed on larger screens..</p>
-            </div>
+    <div class="row">
+        <div v-show="isLoading">Fetching trending Stories</div>
+        <div class="item" v-for="story in stories">
+            <h4> {{ story.title }} </h4>
+            <p> 
+                {{ story.by }} | 
+                <a :href="story.url" target="_blank"> View Story </a> | 
+                <a :href="`https://news.ycombinator.com/item?id=${story.id}`" 
+                    target="_blank"> 
+                    View Comments ({{ story.descendants }})
+                </a> | 
+                Votes ({{ story.score }})
+            </p>
         </div>
     </div>
 </div>
@@ -32,10 +34,55 @@ export default{
     data(){
         return {
             isActive: false,
+            isLoading: true,
+            stories: [],
         }
     },
+
     created(){
         this.isActive = this.selected;
+    },
+    mounted(){
+        // Since the news fetching is an expensive operation, wait till the component is mounted before doing anything.
+        this.fetchHackerNews()
+            .then(() => {
+                this.isLoading = false;
+            });
+
+    },
+
+    methods: {
+        fetchHackerNews(){
+            const topStoriesUrl = 'https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty';
+            const allStories =[];
+
+            return axios.get(topStoriesUrl)
+                .then((response) => {
+                    const limit = 5;
+
+                    // Select First 20 items
+                    const items = response.data.slice(0, limit);
+
+                    items.forEach((item) => {
+
+                        axios.get(this.storyUrl(item))
+                            .then((storyResponse) => {
+                                allStories.push(storyResponse.data);
+                            });
+
+                    });
+
+                    this.stories = allStories;
+
+                })
+                .catch((error) => {
+
+                });
+        },
+        storyUrl(itemId){
+            const url = `https://hacker-news.firebaseio.com/v0/item/${itemId}.json?print=pretty`;
+            return url;
+        }
     }
 }
 </script>

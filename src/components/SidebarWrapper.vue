@@ -7,21 +7,21 @@
             	<!-- Sidebar Image -->
                 <li class="sidebar-brand">
                     <a href="#">
-                        <img src="/static/img/dblogo.png" 
-                            class="img-fluid" 
-                            width="100" height="100" 
+                        <img src="/static/img/dblogo.png"
+                            class="img-fluid"
+                            width="100" height="100"
                             alt="">
                     </a>
                 </li>
 
                 <!-- Default Services  -->
                 <li v-for="item in services">
-                	<a 
-                        href="#" 
-                        :class="{'is-active': item.isActive}"
-                        @click="switchTab(item)">
-                        {{ item.name }}
-                    </a>
+                	<a
+                    href="#"
+                    :class="{'is-active': item.isActive}"
+                    @click="switchTab(item)">
+                    {{ item.name }}
+                  </a>
                 </li>
             </ul>
         </div>
@@ -32,7 +32,7 @@
             <div class="container">
                 <br>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-lg-12">
                     	<!-- Vue Service Components go here -->
                     	<slot></slot>
                     </div>
@@ -40,7 +40,7 @@
             </div>
         </div>
         <!-- /#page-content-wrapper -->
-</div>	
+</div>
 </template>
 
 <script>
@@ -58,7 +58,7 @@ export default{
         switchTab (clickedTab){
             this.services.forEach((item) => {
                 // Check if the clicked item is equal to any of the items in the list  of servicesof services
-                // Then, mutate the isActive data 
+                // Then, mutate the isActive data
                 item.isActive = (item.name == clickedTab.name);
             });
         }

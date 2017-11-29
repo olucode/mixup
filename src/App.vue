@@ -2,11 +2,13 @@
   <div id="wrapper" class="toggled">
 
     <sidebar-wrapper>
-        <hacker-news name="Hacker News" :selected="true"></hacker-news>
+        <hacker-news name="Hacker News"></hacker-news>
 
-        <life-hacker name="Life Hacker"></life-hacker>
+        <life-hacker name="Life Hacker" :selected="true"></life-hacker>
 
         <product-hunt name="Product Hunt"></product-hunt>
+
+        <github-trending name="GitHub Trending"></github-trending>
 
         <news-component name="News"></news-component>
     </sidebar-wrapper>
@@ -21,6 +23,7 @@ import HackerNews from './components/Services/HackerNews.vue';
 import LifeHacker from './components/Services/LifeHacker.vue';
 import ProductHunt from './components/Services/ProductHunt.vue';
 import NewsComponent from './components/Services/NewsComponent.vue';
+import GitHub from './components/Services/GitHub.vue';
 
 export default {
     name: 'app',
@@ -30,6 +33,7 @@ export default {
         'hacker-news': HackerNews,
         'life-hacker': LifeHacker,
         'product-hunt': ProductHunt,
+        'github-trending': GitHub,
         'news-component': NewsComponent,
     }
 }
@@ -47,5 +51,9 @@ export default {
 }
 .item > .media-left{
     margin-right: 10px;
+}
+
+body{
+    background: #E5E5E5;
 }
 </style>
