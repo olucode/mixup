@@ -12,11 +12,11 @@
         <div class="item" v-for="story in stories">
             <h4> {{ story.title }} </h4>
             <p> 
-                {{ story.by }} | 
+                {{ story.author }} | 
                 <a :href="story.url" target="_blank"> View Story </a> | 
-                <a :href="`https://news.ycombinator.com/item?id=${story.id}`" 
+                <a :href="story.comments_link" 
                     target="_blank"> 
-                    View Comments ({{ story.descendants }})
+                    View Comments ({{ story.comments }})
                 </a> | 
                 Votes ({{ story.score }})
             </p>
@@ -44,45 +44,33 @@ export default{
     },
     mounted(){
         // Since the news fetching is an expensive operation, wait till the component is mounted before doing anything.
-        this.fetchHackerNews()
-            .then(() => {
-                this.isLoading = false;
-            });
+        // this.fetchHackerNews()
+    },
 
+    watch: {
+        isActive (){
+            if (this.isActive && this.stories.length == 0) {
+                this.fetchHackerNews();
+            }
+        }
     },
 
     methods: {
         fetchHackerNews(){
-            const topStoriesUrl = 'https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty';
+            const url = 'http://localhost:9090/api/hackernews';
             const allStories =[];
 
-            return axios.get(topStoriesUrl)
+            axios.get(url)
                 .then((response) => {
-                    const limit = 5;
 
-                    // Select First 20 items
-                    const items = response.data.slice(0, limit);
-
-                    items.forEach((item) => {
-
-                        axios.get(this.storyUrl(item))
-                            .then((storyResponse) => {
-                                allStories.push(storyResponse.data);
-                            });
-
-                    });
-
-                    this.stories = allStories;
+                    this.isLoading = false;
+                    this.stories = response.data;
 
                 })
                 .catch((error) => {
 
                 });
         },
-        storyUrl(itemId){
-            const url = `https://hacker-news.firebaseio.com/v0/item/${itemId}.json?print=pretty`;
-            return url;
-        }
     }
 }
 </script>

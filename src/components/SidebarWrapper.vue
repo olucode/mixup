@@ -32,7 +32,7 @@
             <div class="container">
                 <br>
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-md-12">
                     	<!-- Vue Service Components go here -->
                     	<slot></slot>
                     </div>

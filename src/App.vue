@@ -10,6 +10,8 @@
 
         <github-trending name="GitHub Trending"></github-trending>
 
+        <medium-trending name="Medium"></medium-trending>
+
         <news-component name="News"></news-component>
     </sidebar-wrapper>
 
@@ -24,6 +26,7 @@ import LifeHacker from './components/Services/LifeHacker.vue';
 import ProductHunt from './components/Services/ProductHunt.vue';
 import NewsComponent from './components/Services/NewsComponent.vue';
 import GitHub from './components/Services/GitHub.vue';
+import Medium from './components/Services/Medium.vue';
 
 export default {
     name: 'app',
@@ -34,6 +37,7 @@ export default {
         'life-hacker': LifeHacker,
         'product-hunt': ProductHunt,
         'github-trending': GitHub,
+        'medium-trending': Medium,
         'news-component': NewsComponent,
     }
 }
@@ -43,7 +47,7 @@ export default {
 .item {
     margin-bottom: 20px;
     padding-top: 12px;
-    padding-bottom: 12px;
+    padding-bottom: 3px;
     padding-left: 35px;
     padding-right: 35px;
     border-top: 3px groove blue;

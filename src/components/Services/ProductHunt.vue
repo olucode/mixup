@@ -36,7 +36,14 @@ export default{
     },
     created(){
         this.isActive = this.selected;
-    }
+    },
+
+    watch: {
+        isActive (){
+            console.log("Tab Changed to " + this.name);
+        }
+    },
+
 }
 </script>
 

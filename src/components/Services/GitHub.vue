@@ -38,7 +38,13 @@ export default{
         this.isActive = this.selected;
     },
     mounted(){
-        this.fetchGithubTrending();
+        // this.fetchGithubTrending();
+    },
+
+    watch: {
+        isActive (){
+            console.log("Tab Changed to " + this.name);
+        }
     },
 
     methods: {
