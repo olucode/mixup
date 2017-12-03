@@ -6,22 +6,20 @@
 
             	<!-- Sidebar Image -->
                 <li class="sidebar-brand">
-                    <a href="#">
-                        <img src="/static/img/dblogo.png"
-                            class="img-fluid"
-                            width="100" height="100"
-                            alt="">
-                    </a>
+                    <img src="/static/img/577906.jpg"
+                        class="img-fluid"
+                        width="200" height="200"
+                        alt="">
                 </li>
 
                 <!-- Default Services  -->
                 <li v-for="item in services">
-                	<a
-                    href="#"
-                    :class="{'is-active': item.isActive}"
-                    @click="switchTab(item)">
-                    {{ item.name }}
-                  </a>
+                    <a
+                        href="#"
+                        :class="{'is-active': item.isActive}"
+                        @click="switchTab(item)">
+                        {{ item.name }}
+                    </a>
                 </li>
             </ul>
         </div>
@@ -58,7 +56,7 @@ export default{
         switchTab (clickedTab){
             this.services.forEach((item) => {
                 // Check if the clicked item is equal to any of the items in the list  of servicesof services
-                // Then, mutate the isActive data
+                // Then, mutate the component's isActive data
                 item.isActive = (item.name == clickedTab.name);
             });
         }

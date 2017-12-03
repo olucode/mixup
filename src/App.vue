@@ -4,8 +4,6 @@
     <sidebar-wrapper>
         <hacker-news name="Hacker News"></hacker-news>
 
-        <life-hacker name="Life Hacker" :selected="true"></life-hacker>
-
         <product-hunt name="Product Hunt"></product-hunt>
 
         <github-trending name="GitHub Trending"></github-trending>
@@ -39,7 +37,8 @@ export default {
         'github-trending': GitHub,
         'medium-trending': Medium,
         'news-component': NewsComponent,
-    }
+    },
+
 }
 </script>
 
@@ -52,12 +51,19 @@ export default {
     padding-right: 35px;
     border-top: 3px groove blue;
     border-bottom: 3px groove blue;
+    background-color: #F5F8FA;
 }
 .item > .media-left{
     margin-right: 10px;
 }
 
-body{
-    background: #E5E5E5;
+.item:nth-child(even){
+    background-color: #e5e5e5;
 }
+
+body{
+    font-family: "Raleway", sans-serif;
+    background-color: #fff;
+}
+
 </style>
