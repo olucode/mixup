@@ -2,24 +2,21 @@
 <div class="row" v-if="isTabActive">
 
     <div class="row">
-        <div v-show="isLoading">{{ status }}</div>
+        <div v-if="isLoading">Fetching Top Headlines From {{ this.name }}</div>
+
+        <div class="alert alert-danger" v-if="failed">
+            Oops! Something Went Wrong.
+        </div>
     </div>
 
-    <div class="col-lg-12" v-for="article in articles">
-        <div class="media news-item">
-            <div class="media-left">
-                <a :href="article.url">
-                    <img 
-                        class="media-object img-fluid" 
-                        :src="article.urlToImage" :alt="article.title">
-                </a>
-            </div>
-            <div class="media-body">
-                <h4 class="media-heading">
-                    {{ article.title }}
-                </h4>
+    <div class="row">
+
+        <div class="news-item col-lg-12" v-for="article in articles">
+            <h4> {{ article.title }} </h4>
+            <div class="item-content">
+                <p> {{ article.description }} </p>
                 <p>
-                    {{ article.description }}
+                    <a :href="article.url" target="_blank"> View Article </a> ({{ article.author }})
                 </p>
             </div>
         </div>
@@ -39,6 +36,7 @@ export default{
         return {
             isTabActive: false,
             isLoading: true,
+            failed: false,
             articles: [],
         }
     },
@@ -62,34 +60,29 @@ export default{
             axios.get(url)
                 .then((response) => {
                     this.isLoading = false;
-                    this.articles = response.data;
+                    this.articles = response.data.articles;
                 })
                 .catch((error) => {
-                    this.status = "Oops! Something Went Wrong. :(";
-                })
-        }
+                    this.failed = true;
+                    this.isLoading = false;
+                });
+        },
     },
-
-    computed: {
-        status(){
-            return `Fetching top stories on ${this.name}`;
-        }
-    }
 
 }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
 .news-item{
-    margin-bottom: 20px;
-    padding-top: 12px;
-    padding-bottom: 13px;
+    margin-bottom: 15px;
+    padding-top: 10px;
+    padding-bottom: 5px;
     padding-left: 15px;
     padding-right: 35px;
-    border-top: 3px solid blue;
-    border-bottom: 3px solid blue;
+    border-top: 3px solid #000;
+    border-bottom: 3px solid #000;
 }
-.media-body{
-    padding-left: 10px;
+.news-item:nth-child(even){
+    background-color: #F5F8FA;
 }
 </style>

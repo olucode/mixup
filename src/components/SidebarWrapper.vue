@@ -27,10 +27,10 @@
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
-            <div class="container">
+            <div class="container-fluid">
                 <br>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-lg-12">
                     	<!-- Vue Service Components go here -->
                     	<slot></slot>
                     </div>

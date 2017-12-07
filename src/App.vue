@@ -4,7 +4,7 @@
     <sidebar-wrapper>
         <hacker-news name="Hacker News"></hacker-news>
 
-        <product-hunt name="Product Hunt"></product-hunt>
+        <product-hunt name="Product Hunt" :selected="true"></product-hunt>
 
         <github-trending name="GitHub Trending"></github-trending>
 

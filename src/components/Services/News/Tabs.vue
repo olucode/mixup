@@ -1,20 +1,24 @@
 <template lang="html">
 <div>
-    <ul class="nav nav-pills nav-fill">
-        <li class="nav-item" v-for="newsTab in services">
-            <a 
-                class="nav-link" 
-                :class="{'active': newsTab.isTabActive}" 
-                @click="switchNewsTab(newsTab)" 
-                href="#">
-                {{ newsTab.name }}
-            </a>
-        </li>
-    </ul>
+    <div class="container">
+        <div class="row">
+            <ul class="nav nav-pills nav-fill">
+                <li class="nav-item" v-for="newsTab in services">
+                    <a 
+                        class="nav-link" 
+                        :class="{'active': newsTab.isTabActive}" 
+                        @click="switchNewsTab(newsTab)" 
+                        href="#">
+                        {{ newsTab.name }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
 
     <br>
 
-    <div class="tab-content" id="pills-tabContent">
+    <div class="container">
         <slot></slot>
     </div>
 </div>
