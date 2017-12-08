@@ -2,12 +2,19 @@
 <div v-if="isActive">
 
     <div class="row">
-        <h2 class="text-center">Trending Stories on Medium </h2>
+        <h2 class="text-center underline">Trending Stories on Medium </h2>
     </div>
 
-        <div v-show="isLoading">Fetching trending Stories</div>
+    <br>
 
-        <div class="item" v-for="article in articles">
+    <div class="row">
+        <div v-if="isLoading"> Fetching top stories on {{ this.name }} </div>
+
+        <div class="alert alert-danger" v-if="failed">
+            Oops! Something Went Wrong.
+        </div>
+
+        <div class="item col-md-12" v-for="article in articles">
             <h4> {{ article.title }} </h4>
             <div class="item-content">
                 <p> {{ article.subtitle }} </p>
@@ -22,7 +29,7 @@
                     &nbsp;
                 </p>
             </div>
-
+        </div>
     </div>
 </div>
 </template>
@@ -37,14 +44,13 @@ export default{
         return {
             isActive: false,
             isLoading: true,
+            failed: false,
+            status: 'Fetching trending Stories',
             articles: [],
         }
     },
     created(){
         this.isActive = this.selected;
-    },
-    mounted(){
-
     },
 
     watch: {
@@ -64,7 +70,10 @@ export default{
                     this.isLoading = false;
                     this.articles =response.data;
                 })
-                .catch(error => console.log(error))
+                .catch((error) => {
+                    this.failed = true;
+                    this.isLoading = false;
+                });
 
         }
     }
@@ -75,4 +84,15 @@ export default{
 .tag{
     margin-right: 3px;
 }
+
+.item {
+    margin-bottom: 20px;
+    padding-top: 12px;
+    padding-bottom: 3px;
+    padding-left: 35px;
+    padding-right: 35px;
+    border-top: 3px groove #0BE370;
+    border-bottom: 3px groove #0BE370;
+}
+/* #0BE370 */
 </style>
