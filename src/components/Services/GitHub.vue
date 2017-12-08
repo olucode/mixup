@@ -5,15 +5,28 @@
         <h2 class="text-center">Trending Repos on GitHub</h2>
     </div>
 
-    <div class="row">
-        <div v-show="isLoading">Fetching trending repos</div>
+    <br>
 
-        <div class="item" v-for="repo in repos">
+    <div class="row">
+        <div v-if="isLoading"> 
+            Fetching trending repos (today) from <a href="http://github.com">{{ this.name }}</a> 
+        </div>
+
+        <div class="alert alert-danger" v-if="failed">
+            Oops! Something Went Wrong.
+        </div>
+
+        <div class="item col-md-12" v-for="repo in repos">
             <h4> {{ repo.name }} </h4>
             <p> {{ repo.description }} </p>
             <p> 
-                <a :href="repo.href" target="_blank"> View Repo </a> |
-                Stars {{ repo.stars }}
+                by <a :href=" 'https://github.com/' + repo.author">{{ repo.author }}</a> 
+                <span class="divider"> | </span>
+                <a :href="repo.url" target="_blank"> View Repo </a>  &nbsp; |  &nbsp;
+                <span class="divider"> | </span>
+                Stars ({{ repo.stars }})
+                <span class="divider"> | </span>
+                Forks ({{ repo.forks }}) 
             </p>
         </div>
     </div>
@@ -30,6 +43,7 @@ export default{
         return {
             isActive: false,
             isLoading: true,
+            failed: false,
             repos: [],
         }
     },
@@ -37,30 +51,36 @@ export default{
     created(){
         this.isActive = this.selected;
     },
-    mounted(){
-        // this.fetchGithubTrending();
-    },
 
     watch: {
         isActive (){
-            console.log("Tab Changed to " + this.name);
+            if (this.isActive && this.repos.length == 0) {
+                this.fetchGithubTrending();
+            }
         }
     },
 
     methods: {
         fetchGithubTrending(){
-            const fetchTrending = require('trending-github');
+            const url = 'http://localhost:9090/api/github';
 
-            fetchTrending()
-                .then((trending) => {
+            axios.get(url)
+                .then((response) => {
                     this.isLoading = false;
-                    this.repos = trending;
-                });
+                    this.repos = response.data;
+                })
+                .catch((error) => {
+                    this.failed = true;
+                    this.isLoading = false;
+                })
         }
     }
 }
 </script>
 
-<style lang="css">
-
+<style lang="css" scoped>
+span.divider{
+    padding-left: 5px;
+    padding-right: 5px;
+}
 </style>
