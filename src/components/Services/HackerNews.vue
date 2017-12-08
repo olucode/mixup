@@ -8,8 +8,9 @@
     <br>
 
     <div class="row">
-        <div v-show="isLoading">Fetching trending Stories</div>
-        <div class="item" v-for="story in stories">
+        <div v-if="isLoading"> Fetching top stories on {{ this.name }} </div>
+
+        <div class="item col-md-12" v-for="story in stories">
             <h4> {{ story.title }} </h4>
             <p> 
                 {{ story.author }} | 
@@ -35,16 +36,13 @@ export default{
         return {
             isActive: false,
             isLoading: true,
+            status: 'Fetching trending repos',
             stories: [],
         }
     },
 
     created(){
         this.isActive = this.selected;
-    },
-    mounted(){
-        // Since the news fetching is an expensive operation, wait till the component is mounted before doing anything.
-        // this.fetchHackerNews()
     },
 
     watch: {
@@ -58,7 +56,6 @@ export default{
     methods: {
         fetchHackerNews(){
             const url = 'http://localhost:9090/api/hackernews';
-            const allStories =[];
 
             axios.get(url)
                 .then((response) => {
@@ -68,7 +65,7 @@ export default{
 
                 })
                 .catch((error) => {
-
+                    this.status = "Oops! Something Went Wrong. :(";
                 });
         },
     }

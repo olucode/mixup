@@ -2,7 +2,20 @@
 <div v-if="isActive">
 
     <news-tabs>
-        <tab name="BBC"></tab>
+        <news-tab name="BBC" newsId="bbc-news" :isTabSelected="true">
+        </news-tab>
+
+        <news-tab name="CNN" newsId="cnn">
+        </news-tab>
+
+        <news-tab name="Tech Crunch" newsId="techcrunch">           
+        </news-tab>
+
+        <news-tab name="The Next Web" newsId="the-next-web">           
+        </news-tab>
+
+        <news-tab name="BBC Sport" newsId="bbc-sport">           
+        </news-tab>
     </news-tabs>
 
 </div>
@@ -19,7 +32,7 @@ export default{
     },
     components: {
         'news-tabs': Tabs,
-        'tab': Tab
+        'news-tab': Tab
     },
     data(){
         return {

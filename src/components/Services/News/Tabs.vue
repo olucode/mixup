@@ -1,23 +1,14 @@
 <template lang="html">
 <div>
     <ul class="nav nav-pills nav-fill">
-        <li class="nav-item">
-            <a class="nav-link active" href="#">Active</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">BBC</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">CNN</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Techcrunch</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Disabled</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Disabled</a>
+        <li class="nav-item" v-for="newsTab in services">
+            <a 
+                class="nav-link" 
+                :class="{'active': newsTab.isTabActive}" 
+                @click="switchNewsTab(newsTab)" 
+                href="#">
+                {{ newsTab.name }}
+            </a>
         </li>
     </ul>
 
@@ -31,7 +22,24 @@
 
 <script>
 export default{
-
+    data(){
+        return {
+            services: [],
+        }
+    },
+    created (){
+        // Get the components that were inserted into the slot
+        this.services = this.$children;
+    },
+    methods: {
+        switchNewsTab (clickedTab){
+            this.services.forEach((item) => {
+                // Check if the clicked item is equal to any of the items in the list  of servicesof services
+                // Then, mutate the component's isActive data
+                item.isTabActive = (item.name == clickedTab.name);
+            });
+        }
+    }
 }
 </script>
 
