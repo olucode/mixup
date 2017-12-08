@@ -2,7 +2,9 @@
 <div v-if="isActive">
 
     <div class="row">
-        <h2 class="text-center underline">Trending Stories on Medium </h2>
+        <div class="col-lg-12">
+            <h2 class="text-center">Top Stories on Medium </h2>
+        </div>
     </div>
 
     <br>
@@ -68,6 +70,7 @@ export default{
             axios.get(url)
                 .then((response) => {
                     this.isLoading = false;
+                    this.failed = false;
                     this.articles =response.data;
                 })
                 .catch((error) => {
@@ -94,5 +97,4 @@ export default{
     border-top: 3px groove #0BE370;
     border-bottom: 3px groove #0BE370;
 }
-/* #0BE370 */
 </style>

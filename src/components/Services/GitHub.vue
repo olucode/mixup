@@ -2,7 +2,9 @@
 <div v-if="isActive">
 
     <div class="row">
-        <h2 class="text-center">Trending Repos on GitHub</h2>
+        <div class="col-lg-12">
+            <h2 class="text-center">Trending Repos on GitHub</h2>
+        </div>
     </div>
 
     <br>
@@ -22,7 +24,7 @@
             <p> 
                 by <a :href=" 'https://github.com/' + repo.author">{{ repo.author }}</a> 
                 <span class="divider"> | </span>
-                <a :href="repo.url" target="_blank"> View Repo </a>  &nbsp; |  &nbsp;
+                <a :href="repo.url" target="_blank"> View Repo </a> 
                 <span class="divider"> | </span>
                 Stars ({{ repo.stars }})
                 <span class="divider"> | </span>
@@ -68,6 +70,7 @@ export default{
                 .then((response) => {
                     this.isLoading = false;
                     this.repos = response.data;
+                    this.failed = false;
                 })
                 .catch((error) => {
                     this.failed = true;
@@ -82,5 +85,14 @@ export default{
 span.divider{
     padding-left: 5px;
     padding-right: 5px;
+}
+.item{
+    border-top: 3px groove #000;
+    border-bottom: 3px groove #000;
+    background-color: #F6F6EF;
+}
+.item:nth-child(even){
+    background-color: #24292E;
+    color: #FFF;
 }
 </style>

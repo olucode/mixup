@@ -15,7 +15,9 @@
 
     <!-- Custom styles for this template -->
     <link href="/static/css/simple-sidebar.css" rel="stylesheet">
-
+    
+    <!-- Font Awesome -->
+    <link href="/static/css/font-awesome.css" rel="stylesheet">
 </head>
 
 <body>
@@ -29,6 +31,44 @@
     <!-- Bootstrap core JavaScript -->
     <script src="/static/vendor/jquery/jquery.min.js"></script>
     <script src="/static/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            // When screen size changes
+            $(window).resize(function() {
+
+                if ($(this).width() <= 768) {
+                    // Remove sidebar for small screens
+                    $('#wrapper').removeClass('toggled');
+                    // Display nav button
+                    $('#nav-toggle').show();
+
+                    // If the content is clicked on Trigger sidebar focusout,
+                    $('#page-content-wrapper').focus(function(event) {
+                        $('#sidebar-wrapper').focusout();
+                    });
+                } 
+                else {
+                    // Display sidebar for large screens
+                    $('#wrapper').addClass('toggled');
+
+                    // Hide nav toggle
+                    $('#nav-toggle').hide();
+                }
+            });
+
+            // Toggle sidebar display when nav - button is clicked.
+            $('#menu-toggle').click(function(event) {
+                $('#wrapper').toggleClass('toggled');                
+            });
+
+            
+            $('#sidebar-wrapper').focusout(function(event) {
+                $('#wrapper').removeClass('toggled');                
+            });
+
+        });
+    </script>
 
 </body>
 

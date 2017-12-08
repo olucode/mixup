@@ -2,13 +2,19 @@
 <div v-if="isActive">
 
     <div class="row">
-        <h2 class="text-center">News Items From Hacker News</h2>
+        <div class="col-lg-12">
+            <h2 class="text-center">Top Stories on Hacker News</h2>
+        </div>
     </div>
 
     <br>
 
     <div class="row">
         <div v-if="isLoading"> Fetching top stories on {{ this.name }} </div>
+
+        <div class="alert alert-danger" v-if="failed">
+            Oops! Something Went Wrong. :(
+        </div>
 
         <div class="item col-md-12" v-for="story in stories">
             <h4> {{ story.title }} </h4>
@@ -36,6 +42,7 @@ export default{
         return {
             isActive: false,
             isLoading: true,
+            failed: false,
             status: 'Fetching trending repos',
             stories: [],
         }
@@ -61,11 +68,13 @@ export default{
                 .then((response) => {
 
                     this.isLoading = false;
+                    this.failed = false;
                     this.stories = response.data;
 
                 })
                 .catch((error) => {
-                    this.status = "Oops! Something Went Wrong. :(";
+                    this.failed = true;
+                    this.isLoading = false;
                 });
         },
     }

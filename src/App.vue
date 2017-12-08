@@ -1,5 +1,5 @@
 <template>
-  <div id="wrapper" class="toggled">
+  <div id="wrapper" class="">
 
     <sidebar-wrapper>
         <hacker-news name="Hacker News"></hacker-news>

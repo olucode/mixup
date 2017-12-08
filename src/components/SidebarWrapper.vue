@@ -28,6 +28,11 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
+                <div class="row" id="nav-toggle">
+                    <a href="#" class="btn btn-secondary" id="menu-toggle">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                    </a>
+                </div>
                 <br>
                 <div class="row">
                     <div class="col-lg-12">
