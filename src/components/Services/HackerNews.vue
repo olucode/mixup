@@ -72,6 +72,13 @@ export default{
 }
 </script>
 
-<style lang="css">
-	
+<style lang="css" scoped>
+.item{
+    border-top: 3px groove #FF6600;
+    border-bottom: 3px groove #FF6600;
+    background-color: #F6F6EF;
+}
+.item:nth-child(even){
+    background-color: #e5e5e5;
+}
 </style>
