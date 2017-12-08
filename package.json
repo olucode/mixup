@@ -12,8 +12,6 @@
   "dependencies": {
     "axios": "^0.17.1",
     "lodash": "^4.17.4",
-    "medium-json-feed": "0.0.2",
-    "trending-github": "^1.0.2",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
