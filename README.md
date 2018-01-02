@@ -1,4 +1,4 @@
-# reader
+# MixUp
 
 > An all-in-one aggregator for trending stories and social media interests.
 
@@ -18,4 +18,8 @@ npm run build
 npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## License
+
+The MIT License (MIT)
+
+Copyright (c) 2017 Olumide Falomo

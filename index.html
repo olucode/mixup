@@ -30,7 +30,7 @@
 
     <!-- Bootstrap core JavaScript -->
     <script src="/static/vendor/jquery/jquery.min.js"></script>
-    <script src="/static/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script>
         $(document).ready(function () {
 
@@ -57,14 +57,32 @@
                 }
             });
 
+            /*  
+               The window resize function above doesn't work when it's on PC i.e.
+               It hides the sidebar and displays the #nav-toggle button,
+               so we have to explicitly check for when the screen is in PC mode.
+            */
+            if ($(window).width() > 768) {
+                // Display sidebar for large screens
+                $('#wrapper').addClass('toggled');
+
+                // Hide nav toggle
+                $('#nav-toggle').hide();
+            }
+
             // Toggle sidebar display when nav - button is clicked.
             $('#menu-toggle').click(function(event) {
                 $('#wrapper').toggleClass('toggled');                
             });
 
-            
+            /*
+                Hide the sidebar, when it loses focus.
+                This applies to mobile devices only.
+            */
             $('#sidebar-wrapper').focusout(function(event) {
-                $('#wrapper').removeClass('toggled');                
+                if ($(window).width() <= 768) {
+                    $('#wrapper').removeClass('toggled');
+                }
             });
 
         });
