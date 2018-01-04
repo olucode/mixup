@@ -6,7 +6,7 @@
 
             	<!-- Sidebar Image -->
                 <li class="sidebar-brand">
-                    <img src="/static/img/577906.jpg"
+                    <img src="/static/img/mixup-logo.png"
                         class="img-fluid"
                         width="200" height="200"
                         alt="">
@@ -71,6 +71,6 @@ export default{
 
 <style lang="css">
 	.is-active{
-        background: blue;
+        background: #F75AFF;
     }
 </style>
