@@ -4,6 +4,8 @@
     <sidebar-wrapper>
         <hacker-news name="Hacker News"></hacker-news>
 
+        <indie-hackers name="IndieHackers"></indie-hackers>
+
         <product-hunt name="Product Hunt" :selected="true"></product-hunt>
 
         <github-trending name="GitHub Trending"></github-trending>
@@ -25,6 +27,7 @@ import ProductHunt from './components/Services/ProductHunt.vue';
 import NewsComponent from './components/Services/NewsComponent.vue';
 import GitHub from './components/Services/GitHub.vue';
 import Medium from './components/Services/Medium.vue';
+import IndieHackers from './components/Services/IndieHackers.vue';
 
 export default {
     name: 'app',
@@ -37,6 +40,7 @@ export default {
         'github-trending': GitHub,
         'medium-trending': Medium,
         'news-component': NewsComponent,
+        'indie-hackers': IndieHackers,
     },
 
 }
