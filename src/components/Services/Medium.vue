@@ -65,7 +65,7 @@ export default{
 
     methods: {
         fetchMediumTrending(){
-            const url = "http://localhost:9090/api/medium";
+            const url = `${apiUrl}/api/medium`;
 
             axios.get(url)
                 .then((response) => {

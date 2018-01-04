@@ -62,7 +62,7 @@ export default{
 
     methods: {
         fetchHackerNews(){
-            const url = 'http://localhost:9090/api/hackernews';
+            const url = `${apiUrl}/api/hackernews`;
 
             axios.get(url)
                 .then((response) => {

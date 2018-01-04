@@ -64,7 +64,7 @@ export default{
 
     methods: {
         fetchGithubTrending(){
-            const url = 'http://localhost:9090/api/github';
+            const url = `${apiUrl}/api/github`;
 
             axios.get(url)
                 .then((response) => {

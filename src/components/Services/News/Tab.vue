@@ -55,7 +55,7 @@ export default{
 
     methods: {
         fetchHeadlines() {
-            const url = `http://localhost:9090/api/news/${this.newsId}`;
+            const url = `${apiUrl}/api/news/${this.newsId}`;
 
             axios.get(url)
                 .then((response) => {
