@@ -71,6 +71,6 @@ export default{
 
 <style lang="css">
 	.is-active{
-        background: #F75AFF;
+        background: #F70B66;
     }
 </style>
