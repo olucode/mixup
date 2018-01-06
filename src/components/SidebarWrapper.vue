@@ -21,6 +21,12 @@
                         {{ item.name }}
                     </a>
                 </li>
+
+                <br><br>
+
+                <li>
+                    <a href="http://github.com/fortecdev">&copy; 2018 Fortecdev</a>
+                </li>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
