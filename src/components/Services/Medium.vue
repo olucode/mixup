@@ -3,7 +3,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="text-center">Top Stories on Medium </h2>
+            <h2 class="text-center">Featured Stories on <a href="https://medium.com" class="site-link">Medium</a></h2>
         </div>
     </div>
 
@@ -96,5 +96,20 @@ export default{
     padding-right: 35px;
     border-top: 3px groove #0BE370;
     border-bottom: 3px groove #0BE370;
+}
+
+.site-link{
+    display: inline-block;
+    padding: .25em .4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+
+    color: #000;
+    background-color: #0BE370;
 }
 </style>

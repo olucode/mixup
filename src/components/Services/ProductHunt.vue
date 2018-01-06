@@ -2,7 +2,7 @@
 <div v-if="isActive">
 
     <div class="row">
-        <h2 class="text-center">Productt Hunt Trending</h2>
+        <h2 class="text-center"><a href="http://producthunt.com" class="site-link">Productt Hunt Trending</a></h2>
     </div>
 
     <div class="row">
@@ -47,6 +47,19 @@ export default{
 }
 </script>
 
-<style lang="css">
-	
+<style lang="css" scoped>
+.site-link{
+    display: inline-block;
+    padding: .25em .4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+
+    color: #fff;
+    background-color: orange;
+}
 </style>

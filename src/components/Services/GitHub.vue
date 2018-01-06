@@ -3,7 +3,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="text-center">Trending Repos on GitHub</h2>
+            <h2 class="text-center">Trending Repos on <a href="https://github.com/trending/?since=daily" class="site-link">GitHub</a></h2>
         </div>
     </div>
 
@@ -94,5 +94,20 @@ span.divider{
 .item:nth-child(even){
     background-color: #24292E;
     color: #FFF;
+}
+
+.site-link{
+    display: inline-block;
+    padding: .25em .4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+
+    color: #fff;
+    background-color: #24292E;
 }
 </style>
