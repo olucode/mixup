@@ -10,28 +10,31 @@
     <br>
 
     <div class="row">
-        <div v-if="isLoading"> 
-            Fetching featured stories on Indiehackers</a> 
+        <div v-if="isLoading">
+            Fetching featured stories on Indiehackers</a>
         </div>
 
         <div class="alert alert-danger" v-if="failed">
             Oops! Something Went Wrong.
         </div>
 
-        <div class="item col-md-12" v-for="story in stories">
-            <h4> {{ story.title }} </h4>
-            <div class="item-content">
-                <p> {{ story.subtitle }} </p>
-                <p>
-	                <a :href="story.url" target="_blank"> View story </a> 
-	                <span class="divider"> | </span>
-	                Comments ({{ story.comment_count }})
-	                <span class="divider"> | </span>
-	                Votes ({{ story.score }}) 
-                    &nbsp;
-                </p>
+        <div v-for="story in stories" class="story col-md-12">
+          <a :href="story.url" target="_blank" class="story-url">
+            <div class="item">
+                <h4> {{ story.title }} </h4>
+                <div class="item-content">
+                    <p> {{ story.subtitle }} </p>
+                    <p>
+                      Comments ({{ story.comment_count }})
+                      <span class="divider"> | </span>
+                      Votes ({{ story.score }})
+                        &nbsp;
+                    </p>
+                </div>
             </div>
+          </a>
         </div>
+
     </div>
 </div>
 </template>
@@ -87,13 +90,14 @@ span.divider{
     padding-left: 5px;
     padding-right: 5px;
 }
-.item{
+.story{
+    margin-bottom: 20px;
     border-top: 3px groove #24292E;
     border-bottom: 3px groove #24292E;
     background-color: #F6F6EF;
 }
-.item:nth-child(even){
-    background-color: #1E354C;
+.story:nth-child(even){
+    background-color: rgb(68, 93, 117);
     color: #FFF;
 }
 
@@ -112,9 +116,8 @@ span.divider{
     background-color: #142B40;
 }
 
-a{
-	color: #E6567E;	 
-/*	text-decoration: none;
-	background-color: transparent;*/
+a.story-url{
+  text-decoration:none;
+  color:#000;
 }
 </style>

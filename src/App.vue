@@ -53,16 +53,9 @@ export default {
     padding-bottom: 3px;
     padding-left: 35px;
     padding-right: 35px;
-    border-top: 3px groove blue;
-    border-bottom: 3px groove blue;
-    background-color: #F5F8FA;
 }
 .item > .media-left{
     margin-right: 10px;
-}
-
-.item:nth-child(even){
-    background-color: #e5e5e5;
 }
 
 body{

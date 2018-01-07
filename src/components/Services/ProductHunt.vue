@@ -40,7 +40,7 @@ export default{
 
     watch: {
         isActive (){
-            console.log("Tab Changed to " + this.name);
+            // console.log("Tab Changed to " + this.name);
         }
     },
 
