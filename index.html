@@ -21,7 +21,7 @@
 
     <!-- Custom styles for this template -->
     <link href="/static/css/simple-sidebar.css" rel="stylesheet">
-    
+
     <!-- Font Awesome -->
     <link href="/static/css/font-awesome.min.css" rel="stylesheet">
 </head>
@@ -53,7 +53,7 @@
                     $('#page-content-wrapper').focus(function(event) {
                         $('#sidebar-wrapper').focusout();
                     });
-                } 
+                }
                 else {
                     // Display sidebar for large screens
                     $('#wrapper').addClass('toggled');
@@ -63,7 +63,7 @@
                 }
             });
 
-            /*  
+            /*
                The window resize function above doesn't work when it's on PC i.e.
                It hides the sidebar and displays the #nav-toggle button,
                so we have to explicitly check for when the screen is in PC mode.
@@ -78,7 +78,7 @@
 
             // Toggle sidebar display when nav - button is clicked.
             $('#menu-toggle').click(function(event) {
-                $('#wrapper').toggleClass('toggled');                
+                $('#wrapper').toggleClass('toggled');
             });
 
             /*

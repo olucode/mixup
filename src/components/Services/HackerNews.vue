@@ -16,17 +16,19 @@
             Oops! Something Went Wrong. :(
         </div>
 
-        <div class="item col-md-12" v-for="story in stories">
-            <h4> {{ story.title }} </h4>
-            <p> 
-                {{ story.author }} | 
-                <a :href="story.url" target="_blank"> View Story </a> | 
-                <a :href="story.comments_link" 
-                    target="_blank"> 
-                    View Comments ({{ story.comments }})
-                </a> | 
-                Votes ({{ story.score }})
-            </p>
+        <div v-for="story in stories" class="story col-md-12">
+          <a :href="story.url" target="_blank" class="story-url">
+            <div class="item">
+                <h4> {{ story.title }} </h4>
+                <p>
+                    {{ story.author }} |
+                    Votes ({{ story.score }})
+                </p>
+            </div>
+          </a>
+          <a class="comment-button" :href="story.comments_link" target="_blank">
+              View HN Comments ({{ story.comments }})
+          </a>
         </div>
     </div>
 </div>
@@ -82,6 +84,15 @@ export default{
 </script>
 
 <style lang="css" scoped>
+.story{
+  margin-top:12px;
+  margin-bottom:12px;
+}
+a.story-url{
+  text-decoration:none;
+  color:#000;
+}
+
 .item{
     border-top: 3px groove #FF6600;
     border-bottom: 3px groove #FF6600;
@@ -89,6 +100,14 @@ export default{
 }
 .item:nth-child(even){
     background-color: #e5e5e5;
+}
+
+.comment-button{
+  padding: .25em .4em;
+  background-color: #e5e5e5;
+  color:#000;
+  text-decoration: none;
+  border:1px solid #000;
 }
 
 .site-link{
