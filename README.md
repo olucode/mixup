@@ -2,6 +2,8 @@
 
 > An all-in-one aggregator for trending stories and social media interests.
 
+This app is built with VueJs.
+
 ## Build Setup
 
 ``` bash
